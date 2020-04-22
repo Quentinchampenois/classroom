@@ -14,7 +14,7 @@ class Classe
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", options={"unsigned":true})
+     * @ORM\Column(type="integer")
      */
     private $id;
 
@@ -62,7 +62,7 @@ class Classe
     {
         if (!$this->students->contains($student)) {
             $this->students[] = $student;
-            $student->setClassID($this);
+            $student->setClasseID($this);
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Classe
         if ($this->students->contains($student)) {
             $this->students->removeElement($student);
             // set the owning side to null (unless already changed)
-            if ($student->getClassID() === $this) {
-                $student->setClassID(null);
+            if ($student->getClasseID() === $this) {
+                $student->setClasseID(null);
             }
         }
 

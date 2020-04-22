@@ -16,7 +16,7 @@ class Student
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer", options={"unsigned":true})
+     * @ORM\Column(type="integer")
      */
     private $id;
 
@@ -43,7 +43,7 @@ class Student
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Classe", inversedBy="students")
      */
-    private $classID;
+    private $classe;
 
     public function getId(): ?int
     {
@@ -86,14 +86,14 @@ class Student
         return $this;
     }
 
-    public function getClassID(): ?Classe
+    public function getClasse(): ?Classe
     {
-        return $this->classID;
+        return $this->classe;
     }
 
-    public function setClassID(?Classe $classID): self
+    public function setClasse(?Classe $classe): self
     {
-        $this->classID = $classID;
+        $this->classe = $classe;
 
         return $this;
     }
