@@ -15,6 +15,17 @@
                 <th>Name</th>
                 <td>{{ classe.name }}</td>
             </tr>
+            <tr>
+                <th>Students</th>
+                <td>
+                    {% for student in classe.students %}
+                        {{ student.name }}
+                    {% else %}
+                        Empty classe
+                    {% endfor %}
+                </td>
+            </tr>
+
         </tbody>
     </table>
 
