@@ -1,0 +1,9 @@
+version: '3'
+services:
+  mysql_db:
+    image: "mysql:${mysql_version}"
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "${mysql_root_pwd}"
