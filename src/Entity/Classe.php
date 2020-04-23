@@ -8,11 +8,11 @@ use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClasseRepository")
- *  * @UniqueEntity("name")
+ * @UniqueEntity("name")
  * @ApiResource
  */
 class Classe
@@ -21,12 +21,14 @@ class Classe
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer", options={"unsigned":true})
+     * @Groups("students")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=40)
      * @Assert\NotBlank
+     * @Groups("students")
      */
     private $name;
 

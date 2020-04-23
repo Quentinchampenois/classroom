@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Annotation\ApiResource;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StudentRepository")
  * @UniqueEntity("email")
- * @ApiResource
+ * @ApiResource(normalizationContext={"groups"={"students"}})
  */
 class Student
 {
@@ -26,6 +26,7 @@ class Student
     /**
      * @ORM\Column(type="string", length=25)
      * @Assert\NotBlank
+     * @Groups("students")
      */
     private $name;
 
@@ -44,6 +45,7 @@ class Student
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Classe", inversedBy="students")
+     * @Groups({"students"})
      */
     private $classe;
 
