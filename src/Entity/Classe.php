@@ -6,9 +6,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClasseRepository")
+ *  * @UniqueEntity("name")
  * @ApiResource
  */
 class Classe
@@ -16,12 +20,13 @@ class Classe
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"unsigned":true})
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=40, options={"unsigned":true})
+     * @ORM\Column(type="string", length=40)
+     * @Assert\NotBlank
      */
     private $name;
 
