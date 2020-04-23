@@ -5,18 +5,20 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StudentRepository")
  * @UniqueEntity("email")
+ * @ApiResource
  */
 class Student
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", options={"unsigned":true})
      */
     private $id;
 
@@ -86,6 +88,11 @@ class Student
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function getClasse(): ?Classe
     {
         return $this->classe;
@@ -96,9 +103,5 @@ class Student
         $this->classe = $classe;
 
         return $this;
-    }
-    public function __toString()
-    {
-        return $this->name;
     }
 }

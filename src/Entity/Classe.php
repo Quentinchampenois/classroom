@@ -5,9 +5,11 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClasseRepository")
+ * @ApiResource
  */
 class Classe
 {
@@ -19,12 +21,12 @@ class Classe
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=40, options={"unsigned":true})
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Student", mappedBy="classID")
+     * @ORM\OneToMany(targetEntity="App\Entity\Student", mappedBy="classe")
      */
     private $students;
 
@@ -32,6 +34,7 @@ class Classe
     {
         $this->students = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -50,6 +53,11 @@ class Classe
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * @return Collection|Student[]
      */
@@ -62,7 +70,7 @@ class Classe
     {
         if (!$this->students->contains($student)) {
             $this->students[] = $student;
-            $student->setClasseID($this);
+            $student->setClasse($this);
         }
 
         return $this;
@@ -73,17 +81,12 @@ class Classe
         if ($this->students->contains($student)) {
             $this->students->removeElement($student);
             // set the owning side to null (unless already changed)
-            if ($student->getClasseID() === $this) {
-                $student->setClasseID(null);
+            if ($student->getClasse() === $this) {
+                $student->setClasse(null);
             }
         }
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->name;
     }
 
 }
