@@ -25,8 +25,14 @@ class Classe
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=40)
+     * @ORM\Column(type="string", length=40, unique=true)
      * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 40,
+     *      minMessage = "There is not enought characters in this field (4 min)",
+     *      maxMessage = "There is too many characters in this field (40 max)"
+     * )
      */
     private $name;
 

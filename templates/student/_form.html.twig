@@ -1,4 +1,17 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <div class="row">
+        <div class="col-12">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="col-12">
+            {{ form_row(form.surname) }}
+        </div>
+        <div class="col-12">
+            {{ form_row(form.email) }}
+        </div>
+        <div class="col-12">
+            {{ form_row(form.classe) }}
+        </div>
+    </div>
     <button class="btn btn-outline-info">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

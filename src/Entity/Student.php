@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -26,12 +27,24 @@ class Student
     /**
      * @ORM\Column(type="string", length=25)
      * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "validators.errors.min_length",
+     *      maxMessage = "validators.errors.min_length"
+     * )
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=25)
      * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "There is not enought characters in this field (2 min)",
+     *      maxMessage = "There is too many characters in this field (50 max)"
+     * )
      */
     private $surname;
 
@@ -39,11 +52,18 @@ class Student
      * @ORM\Column(type="string", length=100, unique=true)
      * @Assert\NotBlank
      * @Assert\Email
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 80,
+     *      minMessage = "There is not enought characters in this field (2 min)",
+     *      maxMessage = "There is too many characters in this field (80 max)"
+     * )
      */
     private $email;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Classe", inversedBy="students")
+     * @JoinColumn(name="classe_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $classe;
 
