@@ -3,39 +3,50 @@
 {% block title %}Student index{% endblock %}
 
 {% block body %}
-    <h1>Student index</h1>
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>{% trans %}app.features.student.index.title{% endtrans %}</h1>
+                <small>{% trans %}app.features.student.index.subtitle{% endtrans %}</small>
+            </div>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Email</th>
-                <th>Classe</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for student in students %}
-            <tr>
-                <td>{{ student.id }}</td>
-                <td>{{ student.name }}</td>
-                <td>{{ student.surname }}</td>
-                <td>{{ student.email }}</td>
-                <td> {{ (student.classe) ? student.classe : '-' }}</td>
-                <td>
-                    <a href="{{ path('student_show', {'id': student.id}) }}">show</a>
-                    <a href="{{ path('student_edit', {'id': student.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <div class="row">
+            <table class="table col-10 offset-1">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Classe</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td>{{ student.id }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.surname }}</td>
+                        <td>{{ student.email }}</td>
+                        <td> {{ (student.classe) ? student.classe : '-' }}</td>
+                        <td>
+                            <a href="{{ path('student_show', {'id': student.id}) }}">show</a>
+                            <a href="{{ path('student_edit', {'id': student.id}) }}">edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    <a href="{{ path('student_new') }}">Create new</a>
+        <div class="col-12 text-center">
+            <a href="{{ path('student_new') }}">{% trans %}app.features.student.index.actions.create{% endtrans %}</a>
+        </div>
+    </main>
 {% endblock %}
