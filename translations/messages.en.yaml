@@ -1,0 +1,18 @@
+app:
+  actions:
+    navigation:
+      navigate:
+        app: Application
+        api: API
+  features:
+    classroom:
+      description: Lorem ipsum dolor sit amet consectetur adipiscing, elit eros sollicitudin sociis pretium, feugiat habitasse.
+      legend: Access Classroom manager
+      title: Classrooms
+    student:
+      description: Lorem ipsum dolor sit amet consectetur adipiscing, elit eros sollicitudin sociis pretium, feugiat habitasse.
+      legend: Access Student manager
+      title: Students
+  global:
+    title: Awesome classroom manager
+    subtitle: You will not find better...

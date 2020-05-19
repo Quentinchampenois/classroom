@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% include "/main/head.html.twig" %}
+{% endblock %}
+{% block body %}
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>{% trans %}app.global.title{% endtrans %}</h1>
+                <small>{% trans %}app.global.subtitle{% endtrans %}</small>
+            </div>
+        </div>
+        <div class="row justify-content-around mt-3">
+            <div class="card col-4">
+                <div class="card-body">
+                    <h5 class="card-title">{% trans %}app.features.classroom.title{% endtrans %}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{% trans %}app.features.classroom.legend{% endtrans %}</h6>
+                    <p class="card-text">{% trans %}app.features.classroom.description{% endtrans %}</p>
+                    <a href="{{ path('classe_index') }}" class="card-link mr-3">{% trans %}app.actions.navigation.navigate.app{% endtrans %}</a>
+                    <a href="{{ path('api_entrypoint') }}" class="card-link">{% trans %}app.actions.navigation.navigate.api{% endtrans %}</a>
+                </div>
+            </div>
+            <div class="card col-4">
+                <div class="card-body">
+                    <h5 class="card-title">{% trans %}app.features.student.title{% endtrans %}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{% trans %}app.features.student.legend{% endtrans %}</h6>
+                    <p class="card-text">{% trans %}app.features.classroom.description{% endtrans %}</p>
+                    <a href="{{ path('student_index') }}" class="card-link mr-3">{% trans %}app.actions.navigation.navigate.app{% endtrans %}</a>
+                    <a href="{{ path('api_entrypoint') }}" class="card-link">{% trans %}app.actions.navigation.navigate.api{% endtrans %}</a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
