@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Validator\Constraints as AcmeAssert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Annotation\ApiResource;
 
@@ -63,7 +64,8 @@ class Student
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Classe", inversedBy="students")
-     * @JoinColumn(name="classe_id", referencedColumnName="id", onDelete="CASCADE")
+     * @JoinColumn(name="classe_id", referencedColumnName="id")
+     * @AcmeAssert\SizeLimit
      */
     private $classe;
 
