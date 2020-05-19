@@ -3,20 +3,18 @@
 {% block title %}New Classe{% endblock %}
 
 {% block body %}
-    <main class="container">
-        <div class="row">
-            <div class="col-12 text-center">
-                <h1>{% trans %}app.features.classroom.new.title{% endtrans %}</h1>
-                <small>{% trans %}app.features.classroom.new.subtitle{% endtrans %}</small>
-            </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>{% trans %}app.features.classroom.new.title{% endtrans %}</h1>
+            <small>{% trans %}app.features.classroom.new.subtitle{% endtrans %}</small>
         </div>
-        <div class="row">
-            <div class="col-10 offset-2">
-                {{ include('classe/_form.html.twig') }}
-            </div>
-            <div class="col-12 d-flex justify-content-end">
-                <a href="{{ path('classe_index') }}">back to list</a>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-10 offset-2">
+            {{ include('classe/_form.html.twig') }}
         </div>
-    </main>
+        <div class="col-12 d-flex justify-content-end">
+            <a href="{{ path('classe_index') }}">back to list</a>
+        </div>
+    </div>
 {% endblock %}
