@@ -3,9 +3,20 @@
 {% block title %}New Classe{% endblock %}
 
 {% block body %}
-    <h1>Create new Classe</h1>
-
-    {{ include('classe/_form.html.twig') }}
-
-    <a href="{{ path('classe_index') }}">back to list</a>
+    <main class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1>{% trans %}app.features.classroom.new.title{% endtrans %}</h1>
+                <small>{% trans %}app.features.classroom.new.subtitle{% endtrans %}</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 offset-2">
+                {{ include('classe/_form.html.twig') }}
+            </div>
+            <div class="col-12 d-flex justify-content-end">
+                <a href="{{ path('classe_index') }}">back to list</a>
+            </div>
+        </div>
+    </main>
 {% endblock %}

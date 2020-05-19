@@ -9,6 +9,14 @@ app:
       description: Lorem ipsum dolor sit amet consectetur adipiscing, elit eros sollicitudin sociis pretium, feugiat habitasse.
       legend: Access Classroom manager
       title: Classrooms
+      new:
+        title: Let's create an awesome classe
+        subtitle: Please contribute to increase this awesome design
+      index:
+        actions:
+          create: Create a new awesome classe
+        title: Let's see the list of awesome classes
+        subtitle: Please contribute to increase this awesome design
     student:
       description: Lorem ipsum dolor sit amet consectetur adipiscing, elit eros sollicitudin sociis pretium, feugiat habitasse.
       legend: Access Student manager
