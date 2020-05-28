@@ -17,6 +17,8 @@ app:
           create: Create a new awesome classe
         title: Let's see the list of awesome classes
         subtitle: Please contribute to increase this awesome design
+      errors:
+        full: This classe is full, no available place
     student:
       description: Lorem ipsum dolor sit amet consectetur adipiscing, elit eros sollicitudin sociis pretium, feugiat habitasse.
       legend: Access Student manager

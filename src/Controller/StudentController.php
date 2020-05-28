@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/student")
@@ -28,13 +29,27 @@ class StudentController extends AbstractController
     /**
      * @Route("/new", name="student_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, StudentRepository $studentRepository, TranslatorInterface $translator): Response
     {
         $student = new Student();
         $form = $this->createForm(StudentType::class, $student);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ( ! $studentRepository->isPlaceAvailable($student->getClasse()->getId(), 30) ) {
+
+                if (empty($this->container->get('session')->getFlashBag()->get('alert', []))) {
+                    $this->addFlash(
+                        'alert',
+                        $translator->trans('app.features.classroom.errors.full')
+                    );
+                }
+
+                return $this->render('student/new.html.twig', [
+                    'student' => $student,
+                    'form' => $form->createView(),
+                ]);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($student);
             $entityManager->flush();

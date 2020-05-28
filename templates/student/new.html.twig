@@ -10,6 +10,15 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-12">
+            {% for message in app.flashes('alert') %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
         <div class="col-10 offset-2">
             {{ include('student/_form.html.twig') }}
         </div>

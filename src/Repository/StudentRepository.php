@@ -19,32 +19,15 @@ class StudentRepository extends ServiceEntityRepository
         parent::__construct($registry, Student::class);
     }
 
-    // /**
-    //  * @return Student[] Returns an array of Student objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function isPlaceAvailable(int $classeId, int $limit): bool
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
+        $size = $this->createQueryBuilder('u')
+            ->select('count(u.classe)')
+            ->where('u.classe = :classe_id')
+            ->setParameter('classe_id', $classeId, \PDO::PARAM_INT)
             ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+            ->getSingleScalarResult();
 
-    /*
-    public function findOneBySomeField($value): ?Student
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $size < $limit;
     }
-    */
 }
