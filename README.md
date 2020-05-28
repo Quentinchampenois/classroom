@@ -21,9 +21,3 @@ If you want to run it manually :
 
 ## Note
 By default the running port is `8000`.
-
-## To continue
-
-Missing tasks
-* Ensure a class has less than 30 students before saving a new student
-    * Future aim will be to add a new Constraint to check it
